@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  hsqldb:
+    image: blacklabelops/hsqldb
+    container_name: my-hsqldb-container
+    ports:
+      - "9001:9001"
+    volumes:
+      - hsqldb_data:/hsqldb/data
+      - ./mydb.properties:/hsqldb/config/hsqldb.properties
+    environment:
+      - HSQLDB_DATABASE_NAME=mydb
+      - HSQLDB_DATABASE_ALIAS=mydb
+      - HSQLDB_USER=sa
+      - HSQLDB_PASSWORD=
+
+volumes:
+  hsqldb_data:
